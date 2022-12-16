@@ -40,21 +40,15 @@
 </template>
 
 <script>
+import {onMounted} from "vue";
+import usePosts from "../../composabales/posts";
+
 export default {
-    data() {
-        return {
-            posts: []
-        }
-    },
-    mounted() {
-        this.fetchPost()
-    },
-    methods: {
-        fetchPost() {
-            axios.get('/api/posts')
-                .then(response => this.posts = response.data)
-                .catch(err => console.log(err))
-        }
+    setup() {
+        const {posts, getPosts} = usePosts()
+        onMounted(getPosts)
+
+        return { posts }
     }
 }
 </script>
