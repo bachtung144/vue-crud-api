@@ -4,7 +4,7 @@ export default function usePosts() {
     const posts = ref([])
     const getPosts = async () => {
         axios.get('/api/posts')
-            .then(responses => posts.value = responses.data)
+            .then(responses => posts.value = responses.data.data)
     }
 
     return {posts, getPosts}
