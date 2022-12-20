@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
+use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
@@ -32,8 +33,12 @@ class PostController extends Controller
 
     public function store(StorePostRequest $request)
     {
+        if ($request->hasFile('thumbnail')) {
+            $filename = $request->file('thumbnail')->getClientOriginalName();
+            Log::info($filename);
+        }
+
         $post = Post::create($request->validated());
-        sleep(2);
 
         return new PostResource($post);
     }
