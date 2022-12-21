@@ -77,7 +77,7 @@ import usePosts from "../../composabales/posts";
 export default {
     setup() {
         const {categories, getCategories} = useCategories()
-        const {post, getPost, validationErrors, isLoading} = usePosts()
+        const {post, getPost, updatePost, validationErrors, isLoading} = usePosts()
         const route = useRoute()
 
         onMounted(() => {
@@ -89,7 +89,8 @@ export default {
             post,
             categories,
             validationErrors,
-            isLoading
+            isLoading,
+            updatePost
         }
     },
 }
