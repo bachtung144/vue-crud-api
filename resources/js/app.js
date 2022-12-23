@@ -3,10 +3,9 @@ import './bootstrap';
 import { createApp } from 'vue/dist/vue.esm-bundler';
 import {router} from "./routes";
 import { TailwindPagination } from 'laravel-vue-pagination';
-import App from './layouts/App.vue'
 import VueSweetalert2 from 'vue-sweetalert2';
 
-const app = createApp(App)
+const app = createApp({})
 
 app.use(router)
 app.use(VueSweetalert2);
